@@ -1,0 +1,1008 @@
+/* =============================================================================
+   SHOPVERSE — DESIGN TOKEN SYSTEM  v1.0.0
+   Multi-Vendor E-Commerce Platform
+   Compatible: Bootstrap 5.3 · Vite/React · Vanilla CSS
+   Naming convention: --{category}-{scale|variant}-{state}
+   ============================================================================= */
+
+/* ─── 1. PRIMITIVE TOKENS (raw values — never used in components directly) ─── */
+:root {
+  /* ── Color Palette: Blue ─────────────────────────────────────────────── */
+  --color-blue-50: #EFF6FF;
+  --color-blue-100: #DBEAFE;
+  --color-blue-200: #BFDBFE;
+  --color-blue-300: #93C5FD;
+  --color-blue-400: #60A5FA;
+  --color-blue-500: #3B82F6;
+  --color-blue-600: #2563EB;
+  /* brand primary */
+  --color-blue-700: #1D4ED8;
+  /* brand primary hover */
+  --color-blue-800: #1E40AF;
+  --color-blue-900: #1E3A8A;
+
+  /* ── Color Palette: Amber ────────────────────────────────────────────── */
+  --color-amber-50: #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-300: #FCD34D;
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  /* secondary / rating */
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+
+  /* ── Color Palette: Green ────────────────────────────────────────────── */
+  --color-green-50: #F0FDF4;
+  --color-green-100: #DCFCE7;
+  --color-green-200: #BBF7D0;
+  --color-green-400: #4ADE80;
+  --color-green-500: #22C55E;
+  /* success */
+  --color-green-600: #16A34A;
+  --color-green-700: #10B981;
+  /* vendor badge */
+  --color-green-800: #065F46;
+
+  /* ── Color Palette: Red ──────────────────────────────────────────────── */
+  --color-red-50: #FEF2F2;
+  --color-red-100: #FEE2E2;
+  --color-red-200: #FECACA;
+  --color-red-400: #F87171;
+  --color-red-500: #EF4444;
+  /* danger */
+  --color-red-600: #DC2626;
+  /* discount */
+  --color-red-700: #B91C1C;
+
+  /* ── Color Palette: Yellow ───────────────────────────────────────────── */
+  --color-yellow-300: #FDE047;
+  --color-yellow-400: #FACC15;
+  /* warning */
+  --color-yellow-500: #EAB308;
+
+  /* ── Color Palette: Cyan ─────────────────────────────────────────────── */
+  --color-cyan-400: #22D3EE;
+  --color-cyan-500: #06B6D4;
+  /* info */
+  --color-cyan-600: #0891B2;
+  --color-cyan-700: #0E7490;
+
+  /* ── Color Palette: Slate (neutrals) ─────────────────────────────────── */
+  --color-slate-50: #F8FAFC;
+  /* bg-body */
+  --color-slate-100: #F1F5F9;
+  /* bg-muted */
+  --color-slate-200: #E2E8F0;
+  /* border */
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  /* text-muted */
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  /* text-secondary */
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  /* text-primary */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* ── Primitive: Spacing (4-pt grid) ──────────────────────────────────── */
+  --size-0: 0px;
+  --size-1: 4px;
+  --size-2: 8px;
+  --size-3: 12px;
+  --size-4: 16px;
+  --size-5: 20px;
+  --size-6: 24px;
+  --size-7: 28px;
+  --size-8: 32px;
+  --size-9: 36px;
+  --size-10: 40px;
+  --size-11: 44px;
+  --size-12: 48px;
+  --size-14: 56px;
+  --size-16: 64px;
+  --size-20: 80px;
+  --size-24: 96px;
+  --size-32: 128px;
+
+  /* ── Primitive: Font Sizes ───────────────────────────────────────────── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+
+  /* ── Primitive: Font Weights ─────────────────────────────────────────── */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ── Primitive: Line Heights ─────────────────────────────────────────── */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ── Primitive: Letter Spacing ───────────────────────────────────────── */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ── Primitive: Border Radius ────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-pill: 999px;
+  --radius-full: 9999px;
+
+  /* ── Primitive: Z-Index Scale ─────────────────────────────────────────── */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+
+  /* ── Primitive: Opacity ───────────────────────────────────────────────── */
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.10;
+  --opacity-20: 0.20;
+  --opacity-40: 0.40;
+  --opacity-60: 0.60;
+  --opacity-80: 0.80;
+  --opacity-100: 1;
+
+  /* ── Primitive: Transition Durations ─────────────────────────────────── */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+
+  /* ── Primitive: Easing ────────────────────────────────────────────────── */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+/* =============================================================================
+   2. SEMANTIC TOKENS  (alias → primitive; used in all components)
+   ============================================================================= */
+:root {
+  /* ── Brand ───────────────────────────────────────────────────────────── */
+  --color-brand-primary: var(--color-blue-600);
+  --color-brand-primary-hover: var(--color-blue-700);
+  --color-brand-primary-active: var(--color-blue-800);
+  --color-brand-primary-subtle: var(--color-blue-50);
+  --color-brand-primary-muted: var(--color-blue-100);
+  --color-brand-secondary: var(--color-amber-500);
+  --color-brand-secondary-hover: var(--color-amber-600);
+  --color-brand-secondary-subtle: var(--color-amber-50);
+
+  /* ── Status ──────────────────────────────────────────────────────────── */
+  --color-success: var(--color-green-500);
+  --color-success-hover: var(--color-green-600);
+  --color-success-subtle: var(--color-green-50);
+  --color-success-muted: var(--color-green-100);
+
+  --color-danger: var(--color-red-500);
+  --color-danger-hover: var(--color-red-700);
+  --color-danger-subtle: var(--color-red-50);
+  --color-danger-muted: var(--color-red-100);
+
+  --color-warning: var(--color-yellow-400);
+  --color-warning-hover: var(--color-yellow-500);
+  --color-warning-subtle: var(--color-amber-50);
+  --color-warning-muted: var(--color-amber-100);
+
+  --color-info: var(--color-cyan-500);
+  --color-info-hover: var(--color-cyan-600);
+  --color-info-subtle: #ECFEFF;
+  --color-info-muted: #CFFAFE;
+
+  /* ── Surfaces ────────────────────────────────────────────────────────── */
+  --color-bg-body: var(--color-slate-50);
+  --color-bg-surface: var(--color-white);
+  --color-bg-elevated: var(--color-white);
+  --color-bg-muted: var(--color-slate-100);
+  --color-bg-overlay: rgba(15, 23, 42, 0.5);
+  --color-bg-sidebar: var(--color-slate-900);
+
+  /* ── Text ────────────────────────────────────────────────────────────── */
+  --color-text-primary: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-600);
+  --color-text-muted: var(--color-slate-400);
+  --color-text-disabled: var(--color-slate-300);
+  --color-text-inverse: var(--color-white);
+  --color-text-link: var(--color-brand-primary);
+  --color-text-link-hover: var(--color-brand-primary-hover);
+
+  /* ── Border ──────────────────────────────────────────────────────────── */
+  --color-border-default: var(--color-slate-200);
+  --color-border-strong: var(--color-slate-300);
+  --color-border-focus: var(--color-brand-primary);
+  --color-border-error: var(--color-danger);
+  --color-border-success: var(--color-success);
+
+  /* ── Special UI ──────────────────────────────────────────────────────── */
+  --color-rating-star: var(--color-amber-500);
+  --color-badge-vendor: var(--color-green-700);
+  --color-badge-discount: var(--color-red-600);
+  --color-badge-new: var(--color-brand-primary);
+  --color-badge-bestseller: var(--color-amber-500);
+}
+
+
+/* =============================================================================
+   3. TYPOGRAPHY TOKENS
+   ============================================================================= */
+:root {
+  /* Font Families */
+  --font-family-sans: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-heading: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* Semantic Type Scale */
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-md);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+
+  /* Named Weights */
+  --fw-regular: var(--font-weight-regular);
+  --fw-medium: var(--font-weight-medium);
+  --fw-semibold: var(--font-weight-semibold);
+  --fw-bold: var(--font-weight-bold);
+
+  /* Component-specific typography */
+  --font-nav-link: var(--font-size-sm);
+  --font-nav-link-weight: var(--font-weight-medium);
+  --font-product-title: var(--font-size-sm);
+  --font-product-price: var(--font-size-lg);
+  --font-product-mrp: var(--font-size-sm);
+  --font-btn: var(--font-size-sm);
+  --font-btn-weight: var(--font-weight-semibold);
+  --font-badge: var(--font-size-xs);
+  --font-badge-weight: var(--font-weight-semibold);
+  --font-label: var(--font-size-xs);
+  --font-label-weight: var(--font-weight-medium);
+  --font-heading-section: var(--font-size-2xl);
+  --font-heading-card: var(--font-size-xl);
+}
+
+
+/* =============================================================================
+   4. SPACING TOKENS
+   ============================================================================= */
+:root {
+  /* Semantic spacing aliases */
+  --space-1: var(--size-1);
+  --space-2: var(--size-2);
+  --space-3: var(--size-3);
+  --space-4: var(--size-4);
+  --space-5: var(--size-5);
+  --space-6: var(--size-6);
+  --space-8: var(--size-8);
+  --space-10: var(--size-10);
+  --space-12: var(--size-12);
+  --space-16: var(--size-16);
+
+  /* Layout Rhythm */
+  --gap-xs: var(--space-2);
+  --gap-sm: var(--space-3);
+  --gap-md: var(--space-4);
+  --gap-lg: var(--space-6);
+  --gap-xl: var(--space-8);
+  --gap-2xl: var(--space-12);
+
+  /* Component Inner Padding */
+  --padding-btn-y: 12px;
+  --padding-btn-x: 24px;
+  --padding-btn-sm-y: 8px;
+  --padding-btn-sm-x: 16px;
+  --padding-btn-lg-y: 14px;
+  --padding-btn-lg-x: 32px;
+
+  --padding-card: var(--space-5);
+  --padding-card-sm: var(--space-4);
+
+  --padding-input-y: 10px;
+  --padding-input-x: var(--space-4);
+
+  --padding-badge-y: 3px;
+  --padding-badge-x: var(--space-2);
+
+  --padding-section-y: var(--space-12);
+  --padding-section-x: var(--space-6);
+
+  --padding-nav: var(--space-4);
+
+  /* Container widths */
+  --container-max: 1440px;
+  --container-xl: 1280px;
+  --container-lg: 1024px;
+  --container-md: 768px;
+}
+
+
+/* =============================================================================
+   5. BORDER & RADIUS TOKENS
+   ============================================================================= */
+:root {
+  --border-width-thin: 1px;
+  --border-width-base: 1.5px;
+  --border-width-thick: 2px;
+
+  --border-default: var(--border-width-thin) solid var(--color-border-default);
+  --border-strong: var(--border-width-thin) solid var(--color-border-strong);
+  --border-focus: var(--border-width-thick) solid var(--color-border-focus);
+  --border-error: var(--border-width-thin) solid var(--color-border-error);
+
+  /* Semantic radius per component */
+  --radius-btn: 12px;
+  --radius-btn-sm: 8px;
+  --radius-btn-lg: 14px;
+  --radius-card: var(--radius-lg);
+  --radius-card-sm: var(--radius-md);
+  --radius-input: var(--radius-md);
+  --radius-badge: var(--radius-pill);
+  --radius-tag: var(--radius-sm);
+  --radius-avatar: var(--radius-full);
+  --radius-modal: var(--radius-xl);
+  --radius-tooltip: var(--radius-xs);
+  --radius-nav: var(--radius-sm);
+  --radius-chip: var(--radius-pill);
+  --radius-category-card: var(--radius-lg);
+  --radius-hero: var(--radius-xl);
+}
+
+
+/* =============================================================================
+   6. SHADOW TOKENS
+   ============================================================================= */
+:root {
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.10), 0 8px 10px rgba(0, 0, 0, 0.06);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  /* Colored semantic shadows */
+  --shadow-brand: 0 8px 24px rgba(37, 99, 235, 0.20);
+  --shadow-success: 0 8px 24px rgba(34, 197, 94, 0.20);
+  --shadow-danger: 0 8px 24px rgba(239, 68, 68, 0.20);
+
+  /* Component shadows */
+  --shadow-navbar: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-xl);
+  --shadow-modal: var(--shadow-2xl);
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-toast: 0 8px 20px rgba(0, 0, 0, 0.14);
+  --shadow-input-focus: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+
+/* =============================================================================
+   7. TRANSITION TOKENS
+   ============================================================================= */
+:root {
+  --transition-fast: var(--duration-fast) var(--ease-in-out);
+  --transition-base: var(--duration-base) var(--ease-in-out);
+  --transition-slow: var(--duration-slow) var(--ease-in-out);
+  --transition-bounce: var(--duration-base) var(--ease-bounce);
+  --transition-spring: var(--duration-slow) var(--ease-spring);
+
+  /* Shorthand alias (legacy-compatible) */
+  --transition: var(--transition-base);
+}
+
+
+/* =============================================================================
+   8. COMPONENT TOKENS
+   ============================================================================= */
+
+/* ── 8.1 Navbar ───────────────────────────────────────────────────────────── */
+:root {
+  --navbar-bg: var(--color-bg-surface);
+  --navbar-height: 64px;
+  --navbar-height-mobile: 56px;
+  --navbar-border: var(--border-default);
+  --navbar-shadow: var(--shadow-navbar);
+  --navbar-link-color: var(--color-text-secondary);
+  --navbar-link-hover: var(--color-brand-primary);
+  --navbar-link-active: var(--color-brand-primary);
+  --navbar-link-fs: var(--font-nav-link);
+  --navbar-link-fw: var(--font-nav-link-weight);
+  --navbar-brand-color: var(--color-brand-primary);
+  --navbar-icon-color: var(--color-text-secondary);
+  --navbar-badge-bg: var(--color-brand-primary);
+  --navbar-badge-color: var(--color-text-inverse);
+  --navbar-search-bg: var(--color-bg-muted);
+  --navbar-search-border: var(--color-border-default);
+  --navbar-search-radius: var(--radius-pill);
+}
+
+/* ── 8.2 Hero Banner ──────────────────────────────────────────────────────── */
+:root {
+  --hero-bg-gradient-start: var(--color-brand-primary-muted);
+  --hero-bg-gradient-end: var(--color-brand-primary-subtle);
+  --hero-heading-color: var(--color-text-primary);
+  --hero-accent-color: var(--color-brand-primary);
+  --hero-sub-color: var(--color-text-secondary);
+  --hero-radius: var(--radius-hero);
+  --hero-cta-bg: var(--color-brand-primary);
+  --hero-cta-radius: var(--radius-btn);
+  --hero-badge-bg: var(--color-brand-primary);
+  --hero-badge-color: var(--color-text-inverse);
+  --hero-badge-radius: var(--radius-pill);
+  --hero-stat-bg: var(--color-bg-surface);
+  --hero-stat-shadow: var(--shadow-md);
+  --hero-stat-radius: var(--radius-card-sm);
+  --hero-dot-active: var(--color-brand-primary);
+  --hero-dot-inactive: var(--color-slate-300);
+}
+
+/* ── 8.3 Category Card ────────────────────────────────────────────────────── */
+:root {
+  --category-card-bg: var(--color-bg-surface);
+  --category-card-radius: var(--radius-category-card);
+  --category-card-shadow: var(--shadow-sm);
+  --category-card-shadow-hover: var(--shadow-md);
+  --category-card-border: var(--border-default);
+  --category-card-label-color: var(--color-text-primary);
+  --category-card-label-fw: var(--fw-medium);
+  --category-card-icon-bg: var(--color-bg-muted);
+  --category-card-icon-size: 48px;
+  --category-card-transition: var(--transition-base);
+}
+
+/* ── 8.4 Product Card ─────────────────────────────────────────────────────── */
+:root {
+  --product-card-bg: var(--color-bg-surface);
+  --product-card-border: var(--border-default);
+  --product-card-radius: var(--radius-card);
+  --product-card-shadow: var(--shadow-sm);
+  --product-card-shadow-hover: var(--shadow-xl);
+  --product-card-transition: var(--transition-base);
+  --product-card-padding: var(--padding-card-sm);
+  --product-card-img-radius: 12px;
+  --product-card-img-bg: var(--color-bg-muted);
+  --product-price-color: var(--color-text-primary);
+  --product-price-fw: var(--fw-bold);
+  --product-mrp-color: var(--color-text-muted);
+  --product-discount-color: var(--color-badge-discount);
+  --product-title-color: var(--color-text-primary);
+  --product-vendor-color: var(--color-text-secondary);
+  --product-action-bg: var(--color-bg-surface);
+  --product-action-shadow: var(--shadow-sm);
+  --product-action-radius: var(--radius-full);
+  --product-action-color: var(--color-text-secondary);
+  --product-action-hover: var(--color-brand-primary);
+}
+
+/* ── 8.5 Badge & Tag ──────────────────────────────────────────────────────── */
+:root {
+  --badge-radius: var(--radius-pill);
+  --badge-padding: var(--padding-badge-y) var(--padding-badge-x);
+  --badge-fs: var(--font-badge);
+  --badge-fw: var(--font-badge-weight);
+  --badge-primary-bg: var(--color-brand-primary);
+  --badge-primary-color: var(--color-text-inverse);
+  --badge-success-bg: var(--color-success);
+  --badge-success-color: var(--color-text-inverse);
+  --badge-danger-bg: var(--color-danger);
+  --badge-danger-color: var(--color-text-inverse);
+  --badge-warning-bg: var(--color-warning);
+  --badge-warning-color: var(--color-text-primary);
+  --badge-info-bg: var(--color-info);
+  --badge-info-color: var(--color-text-inverse);
+  --badge-vendor-bg: var(--color-badge-vendor);
+  --badge-vendor-color: var(--color-text-inverse);
+  --badge-discount-bg: var(--color-badge-discount);
+  --badge-discount-color: var(--color-text-inverse);
+  --badge-new-bg: var(--color-badge-new);
+  --badge-new-color: var(--color-text-inverse);
+}
+
+/* ── 8.6 Vendor Card ──────────────────────────────────────────────────────── */
+:root {
+  --vendor-card-bg: var(--color-bg-surface);
+  --vendor-card-border: var(--border-default);
+  --vendor-card-radius: var(--radius-card);
+  --vendor-card-shadow: var(--shadow-sm);
+  --vendor-card-shadow-hover: var(--shadow-lg);
+  --vendor-card-badge-bg: var(--color-badge-vendor);
+  --vendor-card-badge-color: var(--color-text-inverse);
+  --vendor-card-badge-radius: var(--radius-pill);
+  --vendor-card-name-color: var(--color-text-primary);
+  --vendor-card-meta-color: var(--color-text-secondary);
+  --vendor-card-avatar-size: 64px;
+  --vendor-card-avatar-radius: var(--radius-full);
+}
+
+/* ── 8.7 Buttons ──────────────────────────────────────────────────────────── */
+:root {
+  --btn-radius: var(--radius-btn);
+  --btn-fs: var(--font-btn);
+  --btn-fw: var(--font-btn-weight);
+  --btn-transition: var(--transition-base);
+  --btn-letter-spacing: 0.01em;
+  --btn-padding: var(--padding-btn-y) var(--padding-btn-x);
+  --btn-sm-padding: var(--padding-btn-sm-y) var(--padding-btn-sm-x);
+  --btn-lg-padding: var(--padding-btn-lg-y) var(--padding-btn-lg-x);
+  --btn-primary-bg: var(--color-brand-primary);
+  --btn-primary-border: var(--color-brand-primary);
+  --btn-primary-color: var(--color-text-inverse);
+  --btn-primary-bg-hover: var(--color-brand-primary-hover);
+  --btn-primary-shadow: var(--shadow-brand);
+  --btn-secondary-bg: var(--color-brand-secondary);
+  --btn-secondary-border: var(--color-brand-secondary);
+  --btn-secondary-color: var(--color-text-primary);
+  --btn-secondary-bg-hover: var(--color-brand-secondary-hover);
+  --btn-outline-bg: transparent;
+  --btn-outline-border: var(--color-brand-primary);
+  --btn-outline-color: var(--color-brand-primary);
+  --btn-outline-bg-hover: var(--color-brand-primary-subtle);
+  --btn-ghost-bg: transparent;
+  --btn-ghost-border: transparent;
+  --btn-ghost-color: var(--color-text-secondary);
+  --btn-ghost-bg-hover: var(--color-bg-muted);
+  --btn-danger-bg: var(--color-danger);
+  --btn-danger-border: var(--color-danger);
+  --btn-danger-color: var(--color-text-inverse);
+  --btn-danger-bg-hover: var(--color-danger-hover);
+  --btn-success-bg: var(--color-success);
+  --btn-success-border: var(--color-success);
+  --btn-success-color: var(--color-text-inverse);
+  --btn-success-bg-hover: var(--color-success-hover);
+  --btn-disabled-opacity: 0.55;
+}
+
+/* ── 8.8 Forms & Inputs ───────────────────────────────────────────────────── */
+:root {
+  --input-bg: var(--color-bg-surface);
+  --input-border: var(--color-border-default);
+  --input-border-hover: var(--color-border-strong);
+  --input-border-focus: var(--color-border-focus);
+  --input-border-error: var(--color-border-error);
+  --input-radius: var(--radius-input);
+  --input-padding: var(--padding-input-y) var(--padding-input-x);
+  --input-fs: var(--font-size-sm);
+  --input-color: var(--color-text-primary);
+  --input-placeholder: var(--color-text-muted);
+  --input-shadow-focus: var(--shadow-input-focus);
+  --input-transition: var(--transition-fast);
+  --input-disabled-bg: var(--color-bg-muted);
+  --input-disabled-color: var(--color-text-disabled);
+  --label-color: var(--color-text-secondary);
+  --label-fs: var(--font-label);
+  --label-fw: var(--font-label-weight);
+  --select-chevron-color: var(--color-text-muted);
+  --checkbox-color: var(--color-brand-primary);
+  --radio-color: var(--color-brand-primary);
+}
+
+/* ── 8.9 Cart ─────────────────────────────────────────────────────────────── */
+:root {
+  --cart-bg: var(--color-bg-surface);
+  --cart-border: var(--border-default);
+  --cart-radius: var(--radius-card);
+  --cart-item-border: var(--border-default);
+  --cart-item-padding: var(--space-4);
+  --cart-summary-bg: var(--color-bg-muted);
+  --cart-summary-radius: var(--radius-card-sm);
+  --cart-qty-btn-bg: var(--color-bg-muted);
+  --cart-qty-btn-radius: var(--radius-sm);
+  --cart-qty-btn-color: var(--color-text-primary);
+  --cart-total-color: var(--color-text-primary);
+  --cart-total-fw: var(--fw-bold);
+  --cart-savings-color: var(--color-success);
+}
+
+/* ── 8.10 Checkout ────────────────────────────────────────────────────────── */
+:root {
+  --checkout-step-active: var(--color-brand-primary);
+  --checkout-step-done: var(--color-success);
+  --checkout-step-pending: var(--color-border-default);
+  --checkout-step-color: var(--color-text-inverse);
+  --checkout-card-bg: var(--color-bg-surface);
+  --checkout-card-border: var(--border-default);
+  --checkout-card-radius: var(--radius-card);
+  --checkout-summary-bg: var(--color-bg-muted);
+  --checkout-summary-radius: var(--radius-card-sm);
+  --checkout-success-color: var(--color-success);
+  --checkout-warning-color: var(--color-warning);
+  --checkout-error-color: var(--color-danger);
+}
+
+/* ── 8.11 Admin Dashboard ─────────────────────────────────────────────────── */
+:root {
+  --admin-sidebar-bg: var(--color-bg-sidebar);
+  --admin-sidebar-width: 260px;
+  --admin-sidebar-collapsed: 72px;
+  --admin-sidebar-color: rgba(255, 255, 255, 0.70);
+  --admin-sidebar-active: var(--color-brand-primary);
+  --admin-sidebar-active-bg: rgba(37, 99, 235, 0.15);
+  --admin-sidebar-hover: rgba(255, 255, 255, 0.10);
+  --admin-sidebar-border: rgba(255, 255, 255, 0.08);
+  --admin-header-bg: var(--color-bg-surface);
+  --admin-header-border: var(--border-default);
+  --admin-header-height: 64px;
+  --admin-header-shadow: var(--shadow-sm);
+  --admin-content-bg: var(--color-bg-body);
+  --admin-card-bg: var(--color-bg-surface);
+  --admin-card-border: var(--border-default);
+  --admin-card-radius: var(--radius-card);
+  --admin-card-shadow: var(--shadow-sm);
+  --admin-card-padding: var(--space-6);
+  --admin-stat-bg: var(--color-bg-surface);
+  --admin-stat-radius: var(--radius-card-sm);
+  --admin-stat-shadow: var(--shadow-sm);
+  --admin-stat-accent: var(--color-brand-primary);
+  --admin-table-border: var(--color-border-default);
+  --admin-table-row-hover: var(--color-bg-muted);
+  --admin-table-header-bg: var(--color-bg-muted);
+  --admin-table-header-color: var(--color-text-secondary);
+}
+
+/* ── 8.12 Footer ──────────────────────────────────────────────────────────── */
+:root {
+  --footer-bg: var(--color-slate-900);
+  --footer-border-top: var(--color-slate-700);
+  --footer-heading-color: var(--color-white);
+  --footer-text-color: var(--color-slate-400);
+  --footer-link-color: var(--color-slate-400);
+  --footer-link-hover: var(--color-white);
+  --footer-divider: var(--color-slate-700);
+  --footer-icon-color: var(--color-slate-400);
+  --footer-icon-hover: var(--color-white);
+  --footer-padding-y: var(--space-12);
+}
+
+/* ── 8.13 Toast / Alert Notifications ────────────────────────────────────── */
+:root {
+  --toast-bg: var(--color-bg-surface);
+  --toast-radius: var(--radius-card-sm);
+  --toast-shadow: var(--shadow-toast);
+  --toast-border: var(--border-default);
+  --toast-z: var(--z-toast);
+  --toast-success-accent: var(--color-success);
+  --toast-danger-accent: var(--color-danger);
+  --toast-warning-accent: var(--color-warning);
+  --toast-info-accent: var(--color-info);
+}
+
+/* ── 8.14 Modal / Drawer ──────────────────────────────────────────────────── */
+:root {
+  --modal-bg: var(--color-bg-surface);
+  --modal-radius: var(--radius-modal);
+  --modal-shadow: var(--shadow-modal);
+  --modal-overlay-bg: var(--color-bg-overlay);
+  --modal-z: var(--z-modal);
+  --modal-header-border: var(--border-default);
+  --modal-footer-border: var(--border-default);
+  --drawer-bg: var(--color-bg-surface);
+  --drawer-width: 400px;
+  --drawer-width-sm: 320px;
+  --drawer-shadow: var(--shadow-2xl);
+  --drawer-z: var(--z-modal);
+}
+
+/* ── 8.15 Skeleton / Loading State ───────────────────────────────────────── */
+:root {
+  --skeleton-base-color: var(--color-slate-200);
+  --skeleton-shimmer-color: var(--color-slate-100);
+  --skeleton-radius: var(--radius-sm);
+  --skeleton-duration: 1.5s;
+}
+
+/* ── 8.16 Rating ──────────────────────────────────────────────────────────── */
+:root {
+  --rating-star-color: var(--color-rating-star);
+  --rating-star-empty: var(--color-slate-300);
+  --rating-count-color: var(--color-text-muted);
+  --rating-count-fs: var(--text-xs);
+}
+
+/* ── 8.17 Countdown Timer (Deals of the Day) ──────────────────────────────── */
+:root {
+  --timer-bg: var(--color-brand-primary);
+  --timer-color: var(--color-text-inverse);
+  --timer-radius: var(--radius-sm);
+  --timer-padding: 4px var(--space-2);
+  --timer-fs: var(--text-sm);
+  --timer-fw: var(--fw-bold);
+}
+
+/* ── 8.18 Pagination ──────────────────────────────────────────────────────── */
+:root {
+  --pagination-color: var(--color-text-secondary);
+  --pagination-bg: var(--color-bg-surface);
+  --pagination-border: var(--border-default);
+  --pagination-radius: var(--radius-md);
+  --pagination-active-bg: var(--color-brand-primary);
+  --pagination-active-color: var(--color-text-inverse);
+  --pagination-hover-bg: var(--color-bg-muted);
+}
+
+/* ── 8.19 Breadcrumb ──────────────────────────────────────────────────────── */
+:root {
+  --breadcrumb-color: var(--color-text-muted);
+  --breadcrumb-active-color: var(--color-text-primary);
+  --breadcrumb-sep-color: var(--color-text-muted);
+  --breadcrumb-hover-color: var(--color-brand-primary);
+  --breadcrumb-fs: var(--text-sm);
+}
+
+/* ── 8.20 Tabs ────────────────────────────────────────────────────────────── */
+:root {
+  --tab-color: var(--color-text-secondary);
+  --tab-active-color: var(--color-brand-primary);
+  --tab-indicator-color: var(--color-brand-primary);
+  --tab-indicator-height: 2px;
+  --tab-hover-bg: var(--color-bg-muted);
+  --tab-border: var(--border-default);
+  --tab-radius: var(--radius-nav);
+  --tab-fw: var(--fw-medium);
+}
+
+
+/* =============================================================================
+   9. BOOTSTRAP 5.3 CSS VARIABLE OVERRIDES
+   ============================================================================= */
+:root {
+  /* Core typography & body */
+  --bs-body-font-family: var(--font-family-sans);
+  --bs-body-font-size: var(--text-base);
+  --bs-body-font-weight: var(--fw-regular);
+  --bs-body-line-height: var(--line-height-normal);
+  --bs-body-color: var(--color-text-primary);
+  --bs-body-bg: var(--color-bg-body);
+
+  /* Brand colors with RGB fallbacks for Bootstrap's rgba() usage */
+  --bs-primary: var(--color-brand-primary);
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-secondary: var(--color-brand-secondary);
+  --bs-secondary-rgb: 245, 158, 11;
+  --bs-success: var(--color-success);
+  --bs-success-rgb: 34, 197, 94;
+  --bs-danger: var(--color-danger);
+  --bs-danger-rgb: 239, 68, 68;
+  --bs-warning: var(--color-warning);
+  --bs-warning-rgb: 250, 204, 21;
+  --bs-info: var(--color-info);
+  --bs-info-rgb: 6, 182, 212;
+  --bs-light: var(--color-bg-muted);
+  --bs-dark: var(--color-slate-900);
+
+  /* Links */
+  --bs-link-color: var(--color-text-link);
+  --bs-link-hover-color: var(--color-text-link-hover);
+
+  /* Borders */
+  --bs-border-color: var(--color-border-default);
+  --bs-border-width: var(--border-width-thin);
+  --bs-border-radius: var(--radius-card-sm);
+  --bs-border-radius-sm: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-card);
+  --bs-border-radius-xl: var(--radius-xl);
+  --bs-border-radius-pill: var(--radius-pill);
+
+  /* Focus ring */
+  --bs-focus-ring-color: rgba(37, 99, 235, 0.25);
+  --bs-focus-ring-width: 3px;
+
+  /* Shadows */
+  --bs-box-shadow: var(--shadow-md);
+  --bs-box-shadow-sm: var(--shadow-sm);
+  --bs-box-shadow-lg: var(--shadow-lg);
+
+  /* Navbar */
+  --bs-navbar-brand-color: var(--navbar-brand-color);
+  --bs-navbar-nav-link-padding-x: var(--space-3);
+}
+
+
+/* =============================================================================
+   10. UTILITY CLASSES
+   ============================================================================= */
+
+/* Surfaces */
+.surface {
+  background: var(--color-bg-surface);
+}
+
+.surface-muted {
+  background: var(--color-bg-muted);
+}
+
+.surface-brand {
+  background: var(--color-brand-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Text */
+.text-brand {
+  color: var(--color-brand-primary) !important;
+}
+
+.text-muted-c {
+  color: var(--color-text-muted) !important;
+}
+
+.text-secondary-c {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-discount {
+  color: var(--color-badge-discount) !important;
+  font-weight: var(--fw-semibold);
+}
+
+.text-success-c {
+  color: var(--color-success) !important;
+}
+
+/* Borders */
+.border-brand {
+  border-color: var(--color-brand-primary) !important;
+}
+
+.border-subtle {
+  border-color: var(--color-border-default) !important;
+}
+
+/* Radius */
+.rounded-card {
+  border-radius: var(--radius-card) !important;
+}
+
+.rounded-pill-c {
+  border-radius: var(--radius-pill) !important;
+}
+
+/* Shadows */
+.shadow-card-c {
+  box-shadow: var(--shadow-card) !important;
+}
+
+.shadow-brand-c {
+  box-shadow: var(--shadow-brand) !important;
+}
+
+/* Transition */
+.transition-c {
+  transition: var(--transition) !important;
+}
+
+/* Skeleton shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--skeleton-base-color) 25%,
+      var(--skeleton-shimmer-color) 50%,
+      var(--skeleton-base-color) 75%);
+  background-size: 200% 100%;
+  animation: shimmer var(--skeleton-duration) infinite;
+  border-radius: var(--skeleton-radius);
+}
+
+
+/* =============================================================================
+   11. READY-TO-USE COMPONENT CLASSES
+   ============================================================================= */
+
+/* ── Product Card ─────────────────────────────────────────────────────────── */
+.product-card {
+  background: var(--product-card-bg);
+  border: var(--product-card-border);
+  border-radius: var(--product-card-radius);
+  box-shadow: var(--product-card-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--product-card-shadow-hover);
+}
+
+/* ── Primary Button ───────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  border-color: var(--btn-primary-border);
+  color: var(--btn-primary-color);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-fw);
+  font-size: var(--btn-fs);
+  padding: var(--btn-padding);
+  letter-spacing: var(--btn-letter-spacing);
+  transition: background var(--btn-transition),
+    box-shadow var(--btn-transition),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-bg-hover);
+  border-color: var(--btn-primary-bg-hover);
+  box-shadow: var(--btn-primary-shadow);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── Container ────────────────────────────────────────────────────────────── */
+.container-xxl {
+  max-width: var(--container-max);
+}
+
+
+/* =============================================================================
+   12. DARK MODE
+   Manual only — add class="dark" to <html> to activate.
+   Auto (prefers-color-scheme) is intentionally disabled to prevent
+   text/background token mismatches on components with hardcoded backgrounds.
+   ============================================================================= */
+.dark {
+  --color-bg-body: #0F172A;
+  --color-bg-surface: #1E293B;
+  --color-bg-elevated: #1E293B;
+  --color-bg-muted: #334155;
+  --color-bg-sidebar: #0B1120;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-text-disabled: #475569;
+  --color-border-default: #334155;
+  --color-border-strong: #475569;
+  --footer-bg: #080E1A;
+  --bs-body-bg: var(--color-bg-body);
+  --bs-body-color: var(--color-text-primary);
+  --bs-border-color: var(--color-border-default);
+}

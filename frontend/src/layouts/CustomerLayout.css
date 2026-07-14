@@ -1,0 +1,12 @@
+/* CustomerLayout.css */
+.sv-customer-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--color-bg-body);
+}
+
+.sv-customer-layout__main {
+  flex: 1;
+  outline: none; /* skip-link focus target */
+}

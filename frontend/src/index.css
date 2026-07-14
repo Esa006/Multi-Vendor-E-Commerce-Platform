@@ -1,0 +1,60 @@
+/* ── Global baseline — ShopVerse ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--font-family-sans, 'Poppins', 'Inter', system-ui, sans-serif);
+  font-size: var(--text-base, 16px);
+  line-height: var(--line-height-normal, 1.5);
+  color: var(--color-text-primary, #0F172A);
+  background-color: var(--color-bg-body, #F8FAFC);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Reset headings to use token system ───────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading, 'Poppins', sans-serif);
+  color: var(--color-text-primary, #0F172A);
+  margin-top: 0;
+}
+
+p { margin-top: 0; }
+
+a {
+  color: var(--color-text-link, #2563EB);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+a:hover { color: var(--color-text-link-hover, #1D4ED8); }
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-muted, #F1F5F9); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-300, #CBD5E1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-slate-400, #94A3B8); }

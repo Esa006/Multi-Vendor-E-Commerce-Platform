@@ -1,0 +1,207 @@
+/* =============================================================================
+   VendorLayout.css — ShopVerse Seller Hub
+   ============================================================================= */
+.sv-vendor-layout {
+  display: flex;
+  min-height: 100svh;
+  background: var(--admin-content-bg, #F8FAFC);
+  font-family: var(--font-family-sans);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.sv-vsidebar {
+  width: var(--admin-sidebar-width, 260px);
+  min-height: 100svh;
+  background: var(--admin-sidebar-bg, #0F172A);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width var(--transition-base);
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  z-index: var(--z-sticky);
+}
+.sv-vendor-layout--collapsed .sv-vsidebar {
+  width: var(--admin-sidebar-collapsed, 72px);
+}
+
+.sv-vsidebar__header {
+  padding: var(--space-5) var(--space-4);
+  border-bottom: 1px solid var(--admin-sidebar-border, rgba(255,255,255,0.08));
+}
+.sv-vsidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+}
+.sv-vsidebar__brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.sv-vsidebar__brand-name {
+  font-family: var(--font-family-heading);
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+}
+.sv-vsidebar__brand-sub {
+  font-size: 11px;
+  color: var(--admin-sidebar-color, rgba(255,255,255,0.60));
+}
+
+.sv-vsidebar__nav {
+  flex: 1;
+  padding: var(--space-4) var(--space-3);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sv-vsidebar__nav::-webkit-scrollbar { width: 4px; }
+.sv-vsidebar__nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.sv-vsidebar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--admin-sidebar-color, rgba(255,255,255,0.70));
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  margin-bottom: 2px;
+}
+.sv-vsidebar__link:hover {
+  background: var(--admin-sidebar-hover);
+  color: var(--color-white);
+}
+.sv-vsidebar__link--active {
+  background: var(--admin-sidebar-active-bg);
+  color: var(--color-brand-primary) !important;
+  font-weight: var(--fw-semibold);
+}
+.sv-vsidebar__link-icon {
+  font-size: 20px;
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  flex-shrink: 0;
+}
+.sv-vsidebar__link--active .sv-vsidebar__link-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.sv-vsidebar__footer {
+  padding: var(--space-3);
+  border-top: 1px solid var(--admin-sidebar-border);
+}
+.sv-vsidebar__link--exit { color: var(--color-slate-500) !important; }
+.sv-vsidebar__link--exit:hover { color: var(--color-slate-300) !important; }
+
+/* ── Main area ────────────────────────────────────────────────────────────── */
+.sv-vendor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ── Top header ───────────────────────────────────────────────────────────── */
+.sv-vheader {
+  position: sticky;
+  top: 0;
+  z-index: calc(var(--z-sticky) - 1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--admin-header-height, 64px);
+  padding: 0 var(--space-6);
+  background: var(--admin-header-bg, #FFFFFF);
+  border-bottom: var(--admin-header-border);
+  box-shadow: var(--admin-header-shadow);
+}
+.sv-vheader__collapse {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+.sv-vheader__collapse:hover { background: var(--color-bg-muted); }
+.sv-vheader__collapse .material-symbols-outlined { font-size: 20px; font-family: 'Material Symbols Outlined'; }
+
+.sv-vheader__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.sv-vheader__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.sv-vheader__icon-btn {
+  position: relative;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.sv-vheader__icon-btn:hover { background: var(--color-bg-muted); }
+.sv-vheader__icon-btn .material-symbols-outlined { font-size: 20px; font-family: 'Material Symbols Outlined'; }
+.sv-vheader__notif-dot {
+  position: absolute; top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  background: var(--color-danger);
+  border-radius: var(--radius-full);
+  border: 2px solid white;
+}
+
+.sv-vheader__vendor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 10px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.sv-vheader__vendor:hover { background: var(--color-bg-muted); }
+.sv-vheader__avatar {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+.sv-vheader__avatar-icon {
+  font-size: 28px;
+  font-family: 'Material Symbols Outlined';
+  color: var(--color-text-muted);
+}
+.sv-vheader__vendor-name {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+/* ── Content ──────────────────────────────────────────────────────────────── */
+.sv-vendor-content {
+  flex: 1;
+  padding: var(--space-6);
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  .sv-vsidebar { position: fixed; height: 100%; z-index: var(--z-modal); }
+  .sv-vendor-main { margin-left: 0; }
+}

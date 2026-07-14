@@ -1,0 +1,113 @@
+/* =============================================================================
+   Footer.css — ShopVerse
+   ============================================================================= */
+.sv-footer {
+  background: var(--footer-bg, #0F172A);
+  color: var(--footer-text-color, #94A3B8);
+  font-family: var(--font-family-sans);
+  border-top: 1px solid var(--color-slate-800);
+  margin-top: auto;
+}
+
+.sv-footer .container-xxl {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.sv-footer__inner {
+  display: grid;
+  grid-template-columns: 260px repeat(4, 1fr);
+  gap: var(--space-10);
+  padding: var(--space-12) 0 var(--space-10);
+}
+@media (max-width: 1199px) { .sv-footer__inner { grid-template-columns: 1fr repeat(4, 1fr); gap: var(--space-8); } }
+@media (max-width: 767px)  { .sv-footer__inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); } }
+@media (max-width: 479px)  { .sv-footer__inner { grid-template-columns: 1fr; } }
+
+/* Brand column */
+.sv-footer__brand { display: flex; flex-direction: column; gap: var(--space-4); }
+.sv-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+.sv-footer__logo-name {
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+}
+.sv-footer__tagline {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--footer-text-color);
+  margin: 0;
+  max-width: 240px;
+}
+.sv-footer__social { display: flex; gap: var(--space-2); }
+.sv-footer__social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-md);
+  color: var(--footer-text-color);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.sv-footer__social-btn:hover { background: var(--color-brand-primary); color: var(--color-white); border-color: transparent; }
+.sv-footer__social-btn .material-symbols-outlined {
+  font-size: 18px;
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 300;
+}
+
+/* Link columns */
+.sv-footer__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--footer-heading-color, #FFFFFF);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--space-4);
+}
+.sv-footer__list { display: flex; flex-direction: column; gap: var(--space-2); }
+.sv-footer__link {
+  font-size: var(--text-sm);
+  color: var(--footer-link-color, #94A3B8);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.sv-footer__link:hover { color: var(--footer-link-hover, #FFFFFF); }
+
+/* Bottom bar */
+.sv-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-5) 0;
+}
+.sv-footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  font-size: var(--text-xs);
+  color: var(--color-slate-500);
+}
+.sv-footer__pay-icons { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.sv-footer__pay-badge {
+  padding: 3px 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  color: var(--color-slate-400);
+  white-space: nowrap;
+}
