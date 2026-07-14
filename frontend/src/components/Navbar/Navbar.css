@@ -626,15 +626,130 @@
 }
 
 
+
+
 /* =============================================================================
-   RESPONSIVE
+   RESPONSIVE — Mobile-first full coverage
+   Breakpoints: 320 | 480 | 576 | 768 | 992 | 1200 | 1440
    ============================================================================= */
-@media (max-width: 991.98px) {
-  .sv-navbar__inner { gap: var(--space-3); }
-  .sv-brand__sub    { display: none; }
+
+/* ── ≤1199px — Hide topbar text to save space ────────────────────────────── */
+@media (max-width: 1199.98px) {
+  .sv-topbar__text { display: none; }
+  .sv-topbar .container-xxl { justify-content: center; }
 }
 
+/* ── ≤991.98px — Tablet: collapse brand sub, compress actions ────────────── */
+@media (max-width: 991.98px) {
+  .sv-navbar__inner { gap: var(--space-2); }
+  .sv-brand__sub    { display: none; }
+
+  /* Hide delivery widget on tablet */
+  .sv-delivery { display: none !important; }
+
+  /* Icon labels hidden on tablet */
+  .sv-icon-btn__label { display: none; }
+  .sv-icon-btn { min-width: 40px; padding: 6px; }
+
+  /* Cart label hidden */
+  .sv-cart__label { display: none; }
+  .sv-cart-btn    { min-width: 40px; padding: 8px; }
+
+  /* User text hidden */
+  .sv-user__btn .sv-user__text { display: none; }
+  .sv-user__btn { padding: 6px 8px; }
+
+  /* Subnav horizontal scroll */
+  .sv-subnav__links { overflow-x: auto; flex-wrap: nowrap; }
+  .sv-subnav__links::-webkit-scrollbar { display: none; }
+  .sv-subnav__link { flex-shrink: 0; font-size: 12px; padding: 0 10px; }
+
+  /* All-cat button smaller */
+  .sv-subnav__all-cat { padding: 0 12px; font-size: 12px; }
+}
+
+/* ── ≤767.98px — Mobile landscape: hide user btn, tighten everything ─────── */
+@media (max-width: 767.98px) {
+  /* Hide desktop-only elements */
+  .sv-user__btn.d-lg-flex { display: none !important; }
+  .sv-icon-btn--notif     { display: none !important; }
+
+  /* Topbar completely hidden */
+  .sv-topbar { display: none; }
+
+  /* Navbar height */
+  .sv-navbar__inner {
+    height: var(--navbar-height-mobile, 56px);
+    padding-inline: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  /* Brand name size */
+  .sv-brand__name { font-size: 15px; }
+
+  /* Subnav hidden on mobile (use drawer instead) */
+  .sv-subnav { display: none !important; }
+
+  /* Category dropdown menu full-width */
+  .sv-cat-menu {
+    position: fixed;
+    top: auto;
+    left: var(--space-3);
+    right: var(--space-3);
+    max-width: none;
+    z-index: var(--z-modal);
+  }
+
+  /* Cart button compact */
+  .sv-cart-btn {
+    min-width: 36px;
+    padding: 6px 8px;
+    border-radius: var(--radius-md);
+  }
+
+  /* Wishlist button compact */
+  .sv-icon-btn { min-width: 36px; padding: 5px; }
+
+  /* User dropdown full-width on mobile */
+  .sv-user__menu {
+    position: fixed;
+    top: 56px;
+    right: var(--space-3);
+    left: var(--space-3);
+    min-width: unset;
+  }
+}
+
+/* ── ≤575.98px — Small mobile phones ────────────────────────────────────── */
 @media (max-width: 575.98px) {
-  .sv-navbar__inner { padding-inline: var(--space-4); height: var(--navbar-height-mobile); }
-  .sv-brand__name   { font-size: 16px; }
+  .sv-navbar__inner { padding-inline: var(--space-2); gap: var(--space-1); }
+  .sv-brand__name   { font-size: 14px; }
+  .sv-hamburger     { width: 36px; height: 36px; }
+
+  /* Count badge position fix */
+  .sv-count-badge { font-size: 9px; min-width: 16px; height: 16px; line-height: 16px; }
+
+  /* Cart text fully hidden */
+  .sv-cart-btn { padding: 5px 7px; border-radius: var(--radius-sm); }
+}
+
+/* ── ≤375px — Very small (iPhone SE, Galaxy A) ───────────────────────────── */
+@media (max-width: 375px) {
+  .sv-brand__name { font-size: 13px; }
+  .sv-navbar__inner { padding-inline: var(--space-2); gap: 2px; }
+
+  /* Reduce icon size on very small screens */
+  .sv-icon-btn .material-symbols-outlined { font-size: 20px; }
+  .sv-cart__icon { font-size: 19px; }
+}
+
+/* ── Offcanvas drawer full-width on phones ───────────────────────────────── */
+@media (max-width: 479px) {
+  .sv-drawer { max-width: 100vw; }
+}
+
+/* ── Smooth touch scrolling for drawer ───────────────────────────────────── */
+.sv-drawer__body {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }

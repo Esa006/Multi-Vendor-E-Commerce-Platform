@@ -112,6 +112,93 @@ const TOP_CATEGORIES = [
   { label: 'Books',         img: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=300&q=80', count: '8,500+ products' },
 ];
 
+const FEATURED_PRODUCTS = [
+  {
+    id: 101, tag: 'Best Seller', name: 'Apple iPhone 15 Pro', desc: '128GB, Natural Titanium',
+    price: '₹1,24,900', mrp: '₹1,34,900', vendor: 'Apple Flagship Store', rating: 4.9,
+    img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 102, tag: 'Hot Brand', name: 'Sony WH-1000XM5 ANC', desc: 'Industry Leading Noise Cancellation',
+    price: '₹29,999', mrp: '₹34,999', vendor: 'Sony India', rating: 4.8,
+    img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 103, tag: 'Premium', name: 'Dell XPS 13 Core Ultra', desc: '16GB RAM, 512GB Intel Evo SSD',
+    price: '₹98,999', mrp: '₹1,14,999', vendor: 'Dell Authorized Store', rating: 4.7,
+    img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 104, tag: 'Popular', name: 'Nike Zoom Fly 5', desc: 'Road Running Shoes for Men',
+    price: '₹11,995', mrp: '₹14,995', vendor: 'Nike Official Store', rating: 4.6,
+    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80',
+  },
+];
+
+const TRENDING_PRODUCTS = [
+  {
+    id: 201, tag: 'AI Enabled', name: 'Samsung Galaxy S24 Ultra', desc: '12GB RAM, 256GB Storage, S-Pen',
+    price: '₹1,29,999', mrp: '₹1,39,999', vendor: 'Samsung Plaza', rating: 4.9,
+    img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 202, tag: 'New iPad', name: 'iPad Air M2 Display', desc: '11-inch Liquid Retina Display',
+    price: '₹59,900', mrp: '₹64,900', vendor: 'Apple Flagship Store', rating: 4.8,
+    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 203, tag: 'Instax', name: 'Fujifilm Instax Mini 12', desc: 'Instant Film Camera, White',
+    price: '₹5,999', mrp: '₹6,999', vendor: 'PhotoWorld Store', rating: 4.5,
+    img: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=300&q=80',
+  },
+  {
+    id: 204, tag: 'Nespresso', name: 'Nespresso Vertuo Next', desc: 'Premium Coffee Espresso Maker',
+    price: '₹15,999', mrp: '₹18,999', vendor: 'Nestle Home', rating: 4.6,
+    img: 'https://images.unsplash.com/photo-1517256064527-09c53b2d0bc6?auto=format&fit=crop&w=300&q=80',
+  },
+];
+
+const FEATURED_VENDORS = [
+  {
+    id: 1, name: 'TechWorld Store', rating: 4.8, count: '1.2k products', verified: true, logo: 'devices',
+    banner: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=300&q=80'
+  },
+  {
+    id: 2, name: 'FootStyle Store', rating: 4.6, count: '850 products', verified: true, logo: 'checkroom',
+    banner: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80'
+  },
+  {
+    id: 3, name: 'Apple Authorized', rating: 4.9, count: '320 products', verified: true, logo: 'phone_iphone',
+    banner: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=300&q=80'
+  },
+  {
+    id: 4, name: 'HomeNeeds Direct', rating: 4.5, count: '2.1k products', verified: false, logo: 'kitchen',
+    banner: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=300&q=80'
+  }
+];
+
+const PROMO_BANNERS = [
+  {
+    id: 1, tag: 'Limited Offer', title: 'Premium Audio Gear', desc: 'Get up to 50% Off on Sony, Bose, and boAt products.',
+    cta: 'Grab Offer', bg: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)',
+    img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=200&q=80'
+  },
+  {
+    id: 2, tag: 'Work From Home', title: 'Ergonomic Desk setups', desc: 'Level up your productivity with modern utility tables.',
+    cta: 'Explore Setup', bg: 'linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)',
+    img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=200&q=80'
+  }
+];
+
+const TOP_BRANDS = [
+  { name: 'Apple', desc: 'Original Authorized', icon: 'star' },
+  { name: 'Sony', desc: 'Premium Electronics', icon: 'headphones' },
+  { name: 'Samsung', desc: 'Innovative Tech', icon: 'devices' },
+  { name: 'Nike', desc: 'Athletic Footwear', icon: 'sports_basketball' },
+  { name: 'boAt', desc: 'Wireless Audio', icon: 'speaker' },
+  { name: 'Philips', desc: 'Smart Home Living', icon: 'lightbulb' }
+];
+
 /* ══════════════════════════════════════════════════════
    COUNTDOWN HOOK
 ══════════════════════════════════════════════════════ */
@@ -146,12 +233,13 @@ function Stars({ rating }) {
   );
 }
 
-/* Deal product card */
-function DealCard({ product }) {
+/* Generic Product Card */
+function ProductCard({ product }) {
   const [wished, setWished] = useState(false);
   return (
     <div className="sv-deal-card" role="article" aria-label={product.name}>
-      <span className="sv-deal-badge">-{product.discount}%</span>
+      {product.discount && <span className="sv-deal-badge">-{product.discount}%</span>}
+      {product.tag && <span className="sv-deal-badge sv-deal-badge--tag">{product.tag}</span>}
       <button
         className={`sv-deal-wish${wished ? ' sv-deal-wish--active' : ''}`}
         onClick={() => setWished((v) => !v)}
@@ -167,7 +255,7 @@ function DealCard({ product }) {
         <p className="sv-deal-desc">{product.desc}</p>
         <div className="sv-deal-price-row">
           <span className="sv-deal-price">{product.price}</span>
-          <span className="sv-deal-mrp">{product.mrp}</span>
+          {product.mrp && <span className="sv-deal-mrp">{product.mrp}</span>}
         </div>
         <div className="sv-deal-meta">
           <span className="sv-deal-vendor">{product.vendor}</span>
@@ -190,6 +278,8 @@ export default function HeroSection() {
   const [animKey, setAnimKey] = useState(0);
   const countdown = useCountdown(8 * 3600 + 45 * 60 + 32);
   const autoRef = useRef(null);
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
 
   const goTo = (i) => { setSlide(i); setAnimKey((k) => k + 1); };
   const prev = () => goTo((slide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
@@ -200,6 +290,15 @@ export default function HeroSection() {
     return () => clearInterval(autoRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slide]);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 5000);
+    }
+  };
 
   const current = HERO_SLIDES[slide];
 
@@ -351,12 +450,10 @@ export default function HeroSection() {
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 4 — DEALS OF THE DAY
+          SECTION 4 — DEALS OF THE DAY (FLASH SALE)
       ══════════════════════════════════════════ */}
       <section className="sv-deals" aria-label="Deals of the Day">
         <div className="container-xxl">
-
-          {/* Section header */}
           <div className="sv-section-header">
             <div className="sv-section-header__left">
               <h2 className="sv-section-title">Deals of the Day</h2>
@@ -380,9 +477,8 @@ export default function HeroSection() {
             <a href="/deals" className="sv-view-all-btn">View All Deals</a>
           </div>
 
-          {/* Deal cards */}
           <div className="sv-deals__grid">
-            {DEAL_PRODUCTS.map((p) => <DealCard key={p.id} product={p} />)}
+            {DEAL_PRODUCTS.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>
         </div>
       </section>
@@ -415,6 +511,155 @@ export default function HeroSection() {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 6 — FEATURED PRODUCTS
+      ══════════════════════════════════════════ */}
+      <section className="sv-featured-products" aria-label="Featured Products">
+        <div className="container-xxl">
+          <div className="sv-section-header">
+            <h2 className="sv-section-title">Featured Products</h2>
+            <a href="/shop" className="sv-view-all-btn">View Featured</a>
+          </div>
+          <div className="sv-deals__grid">
+            {FEATURED_PRODUCTS.map((p) => <ProductCard key={p.id} product={p} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 7 — PROMOTIONAL BANNERS
+      ══════════════════════════════════════════ */}
+      <section className="sv-promo-banners" aria-label="Promotional Offers">
+        <div className="container-xxl">
+          <div className="sv-promo-grid">
+            {PROMO_BANNERS.map((banner) => (
+              <div key={banner.id} className="sv-promo-card" style={{ background: banner.bg }}>
+                <div className="sv-promo-card__body">
+                  <span className="sv-promo-card__tag">{banner.tag}</span>
+                  <h3 className="sv-promo-card__title">{banner.title}</h3>
+                  <p className="sv-promo-card__desc">{banner.desc}</p>
+                  <a href="/shop" className="sv-promo-card__btn">{banner.cta}</a>
+                </div>
+                <div className="sv-promo-card__img-wrap">
+                  <img src={banner.img} alt={banner.title} className="sv-promo-card__img" loading="lazy" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 8 — TRENDING PRODUCTS
+      ══════════════════════════════════════════ */}
+      <section className="sv-trending-products" aria-label="Trending Products">
+        <div className="container-xxl">
+          <div className="sv-section-header">
+            <h2 className="sv-section-title">Trending Products</h2>
+            <a href="/shop" className="sv-view-all-btn">View Trending</a>
+          </div>
+          <div className="sv-deals__grid">
+            {TRENDING_PRODUCTS.map((p) => <ProductCard key={p.id} product={p} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 9 — FEATURED VENDORS
+      ══════════════════════════════════════════ */}
+      <section className="sv-featured-vendors" aria-label="Featured Vendors">
+        <div className="container-xxl">
+          <div className="sv-section-header">
+            <h2 className="sv-section-title">Featured Vendors</h2>
+            <a href="/vendors" className="sv-view-all-btn">View All Vendors</a>
+          </div>
+
+          <div className="sv-vendors-grid">
+            {FEATURED_VENDORS.map((v) => (
+              <div key={v.id} className="sv-vendor-shop-card">
+                <div className="sv-vendor-shop-card__banner">
+                  <img src={v.banner} alt="" className="sv-vendor-shop-card__banner-img" loading="lazy" />
+                  <div className="sv-vendor-shop-card__overlay" />
+                </div>
+                <div className="sv-vendor-shop-card__body">
+                  <div className="sv-vendor-shop-card__badge-wrap">
+                    <div className="sv-vendor-shop-card__logo">
+                      <span className="material-symbols-outlined">{v.logo}</span>
+                    </div>
+                    {v.verified && (
+                      <span className="sv-vendor-shop-card__verified" title="Verified Vendor">
+                        <span className="material-symbols-outlined">verified</span>
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="sv-vendor-shop-card__name">{v.name}</h3>
+                  <div className="sv-vendor-shop-card__meta">
+                    <Stars rating={v.rating} />
+                    <span className="sv-vendor-shop-card__count">{v.count}</span>
+                  </div>
+                  <a href={`/shop?vendor=${v.id}`} className="sv-vendor-shop-card__visit">Visit Store</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 10 — TOP BRANDS
+      ══════════════════════════════════════════ */}
+      <section className="sv-top-brands" aria-label="Top Brands">
+        <div className="container-xxl">
+          <div className="sv-section-header">
+            <h2 className="sv-section-title">Top Brands</h2>
+          </div>
+          <div className="sv-brands-grid">
+            {TOP_BRANDS.map((b) => (
+              <div key={b.name} className="sv-brand-card">
+                <span className="material-symbols-outlined sv-brand-card__icon">{b.icon}</span>
+                <span className="sv-brand-card__name">{b.name}</span>
+                <span className="sv-brand-card__desc">{b.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          SECTION 11 — NEWSLETTER
+      ══════════════════════════════════════════ */}
+      <section className="sv-newsletter" aria-label="Newsletter subscription">
+        <div className="container-xxl">
+          <div className="sv-newsletter__content">
+            <div className="sv-newsletter__text">
+              <span className="sv-newsletter__badge">Stay Updated</span>
+              <h2 className="sv-newsletter__title">Subscribe to our Newsletter</h2>
+              <p className="sv-newsletter__desc">Get updates on new store arrivals, special vendor deals, and limited-time coupons.</p>
+            </div>
+            <form onSubmit={handleSubscribe} className="sv-newsletter__form">
+              {subscribed ? (
+                <div className="sv-newsletter__success">
+                  <span className="material-symbols-outlined">check_circle</span>
+                  Thank you! You have successfully subscribed to ShopVerse.
+                </div>
+              ) : (
+                <div className="sv-newsletter__group">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address..."
+                    className="sv-newsletter__input"
+                  />
+                  <button type="submit" className="sv-newsletter__btn">Subscribe</button>
+                </div>
+              )}
+            </form>
           </div>
         </div>
       </section>
