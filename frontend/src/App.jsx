@@ -7,6 +7,7 @@ import VendorLayout   from './layouts/VendorLayout';
 
 /* ── Customer pages (placeholder) ───────────────────────────── */
 import HeroSection from './components/HeroSection';
+import ShopPage    from './pages/ShopPage/ShopPage';
 
 function HomePage()        { return <HeroSection />; }
 function PlaceholderPage({ title }) {
@@ -49,7 +50,8 @@ export default function App() {
           }
         >
           <Route path="/"               element={<HomePage />} />
-          <Route path="/shop"           element={<PlaceholderPage title="Products" />} />
+          <Route path="/shop"           element={<ShopPage />} />
+          <Route path="/products"       element={<ShopPage />} />
           <Route path="/vendors"        element={<PlaceholderPage title="Vendors" />} />
           <Route path="/deals"          element={<PlaceholderPage title="Deals" />} />
           <Route path="/new-arrivals"   element={<PlaceholderPage title="New Arrivals" />} />
