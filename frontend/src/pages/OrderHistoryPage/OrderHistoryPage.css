@@ -1,0 +1,130 @@
+/* =============================================================================
+   OrderHistoryPage.css — ShopVerse
+   ============================================================================= */
+
+.sv-order-history {
+  background: var(--color-background);
+  min-height: 80vh;
+  padding: 40px 20px;
+}
+
+.sv-order-history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sv-order-history-header {
+  margin-bottom: 30px;
+}
+
+.sv-order-history-header h2 {
+  font-size: 28px;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.sv-order-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sv-order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.sv-order-info {
+  display: flex;
+  gap: 32px;
+}
+
+.sv-order-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sv-order-info-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.sv-order-info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sv-order-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.sv-order-status-badge.confirmed, .sv-order-status-badge.delivered {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.sv-order-status-badge.pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+}
+
+.sv-order-status-badge.cancelled {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.sv-order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sv-order-item-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sv-order-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.sv-order-item-details {
+  flex: 1;
+}
+
+.sv-order-item-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.sv-order-item-vendor {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.sv-order-item-price {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}

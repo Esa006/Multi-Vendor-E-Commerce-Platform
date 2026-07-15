@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
+import { useCart } from '../../context/CartContext';
 import './ShopPage.css';
 
 /* ══════════════════════════════════════════════════════
@@ -70,6 +72,9 @@ export default function ShopPage() {
     resetFilters,
     handleBrandToggle
   } = useShop();
+
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -370,52 +375,57 @@ export default function ShopPage() {
                     <div className="sv-product-card__actions-overlay">
                       <button
                         className="sv-card-action-btn"
-                        onClick={() => setQuickViewProduct(product)}
+                        onClick={(e) => { e.stopPropagation(); setQuickViewProduct(product); }}
                         aria-label="Quick view product details"
                       >
                         <span className="material-symbols-outlined">visibility</span>
                       </button>
                       <button
                         className={`sv-card-action-btn${wishlist.includes(product.id) ? ' active' : ''}`}
-                        onClick={() => toggleWishlist(product.id)}
+                        onClick={(e) => { e.stopPropagation(); toggleWishlist(product.id); }}
                         aria-label={wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
                       >
                         <span className="material-symbols-outlined">favorite</span>
                       </button>
                     </div>
 
-                    <div className="sv-deal-img-wrap">
-                      <img src={product.thumbnail} alt={product.name} className="sv-deal-img" loading="lazy" />
-                    </div>
-
-                    <div className="sv-deal-body">
-                      <span className="sv-product-card__brand-label">{product.brand?.name || 'Generic'}</span>
-                      <p className="sv-deal-name">{product.name}</p>
-                      
-                      <div className="sv-deal-price-row">
-                        <span className="sv-deal-price">₹{currentPrice.toLocaleString('en-IN')}</span>
-                        {mrpValue && <span className="sv-deal-mrp">₹{mrpValue.toLocaleString('en-IN')}</span>}
+                    <Link to={`/product/${product.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      <div className="sv-deal-img-wrap">
+                        <img src={product.thumbnail} alt={product.name} className="sv-deal-img" loading="lazy" />
                       </div>
 
-                      <div className="sv-deal-meta">
-                        <span className="sv-deal-vendor">{product.vendor?.store_name || 'Generic Store'}</span>
-                        <div className="sv-product-card__rating-row">
-                          <Stars rating={product.rating} />
-                          <span className="sv-product-card__review-count">({product.reviews || 0})</span>
+                      <div className="sv-deal-body">
+                        <span className="sv-product-card__brand-label">{product.brand?.name || 'Generic'}</span>
+                        <p className="sv-deal-name">{product.name}</p>
+                        
+                        <div className="sv-deal-price-row">
+                          <span className="sv-deal-price">₹{currentPrice.toLocaleString('en-IN')}</span>
+                          {mrpValue && <span className="sv-deal-mrp">₹{mrpValue.toLocaleString('en-IN')}</span>}
+                        </div>
+
+                        <div className="sv-deal-meta">
+                          <span className="sv-deal-vendor">{product.vendor?.store_name || 'Generic Store'}</span>
+                          <div className="sv-product-card__rating-row">
+                            <Stars rating={product.rating} />
+                            <span className="sv-product-card__review-count">({product.reviews || 0})</span>
+                          </div>
+                        </div>
+
+                        <div className="sv-product-card__footer-row">
+                          <span className={`sv-stock-status${!isOutOfStock ? ' in-stock' : ' out-of-stock'}`}>
+                            {isOutOfStock ? 'Out of Stock' : (product.stock <= 5 ? `Only ${product.stock} Left` : 'In Stock')}
+                          </span>
                         </div>
                       </div>
+                    </Link>
 
-                      <div className="sv-product-card__footer-row">
-                        <span className={`sv-stock-status${!isOutOfStock ? ' in-stock' : ' out-of-stock'}`}>
-                          {isOutOfStock ? 'Out of Stock' : (product.stock <= 5 ? `Only ${product.stock} Left` : 'In Stock')}
-                        </span>
-                      </div>
-
+                    <div className="sv-deal-body" style={{ paddingTop: 0, paddingBottom: 16 }}>
                       <button
                         className="sv-deal-add-btn"
                         disabled={isOutOfStock}
                         type="button"
                         aria-label={`Add ${product.name} to cart`}
+                        onClick={(e) => { e.stopPropagation(); addToCart(product.id, null, 1); }}
                       >
                         <span className="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
                         {!isOutOfStock ? 'Add to Cart' : 'Out of Stock'}
@@ -502,7 +512,14 @@ export default function ShopPage() {
                 <p className="sv-quickview-desc">Discover the premium quality and outstanding design from {quickViewProduct.brand?.name || 'Generic'}. Built with materials selected for durability and comfort.</p>
 
                 <div className="sv-quickview-actions">
-                  <button className="sv-deal-add-btn" disabled={quickViewProduct.stock <= 0}>
+                  <button
+                    className="sv-deal-add-btn"
+                    disabled={quickViewProduct.stock <= 0}
+                    onClick={() => {
+                      addToCart(quickViewProduct.id, null, 1);
+                      setQuickViewProduct(null); // Optional: close modal on add
+                    }}
+                  >
                     <span className="material-symbols-outlined">shopping_cart</span>
                     {quickViewProduct.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
                   </button>

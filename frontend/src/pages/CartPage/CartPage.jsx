@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import './CartPage.css';
 
 export default function CartPage() {
+  const navigate = useNavigate();
   const {
     cartItems,
     cartTotal,
@@ -78,7 +79,7 @@ export default function CartPage() {
         <h2 className="sv-section-title" style={{ marginTop: '24px' }}>Shopping Cart ({cartItems.length} items)</h2>
 
         <div className="sv-cart-layout">
-          
+
           {/* ── LEFT: CART ITEMS LIST ── */}
           <div className="sv-cart-list-wrap">
             <AnimatePresence>
@@ -108,7 +109,7 @@ export default function CartPage() {
                         {product.name}
                       </Link>
                       <span className="sv-cart-item-vendor">Vendor: {product.vendor?.store_name || 'Generic Store'}</span>
-                      
+
                       {item.variant && (
                         <span className="sv-cart-item-variant">
                           {item.variant.name}: {item.variant.value}
@@ -166,7 +167,7 @@ export default function CartPage() {
           {/* ── RIGHT: SUMMARY PANEL ── */}
           <div className="sv-cart-summary">
             <h3 className="sv-summary-title">Order Summary</h3>
-            
+
             <div className="sv-summary-row">
               <span>Subtotal</span>
               <span>₹{cartTotal.toLocaleString('en-IN')}</span>
@@ -176,7 +177,7 @@ export default function CartPage() {
               <span>Shipping</span>
               <span>{shippingCost === 0 ? 'FREE' : `₹${shippingCost}`}</span>
             </div>
-            
+
             {!isFreeShipping && cartTotal > 0 && (
               <span className="sv-slider-help" style={{ marginTop: '-8px', color: 'var(--color-brand-primary)' }}>
                 Add ₹{(shippingThreshold - cartTotal).toLocaleString('en-IN')} more for FREE shipping!
@@ -207,7 +208,7 @@ export default function CartPage() {
               <span>₹{grandTotal.toLocaleString('en-IN')}</span>
             </div>
 
-            <button className="sv-checkout-btn" onClick={() => toast.info('Proceeding to checkout (Day 6 feature!)')}>
+            <button className="sv-checkout-btn" onClick={() => navigate('/checkout')}>
               Proceed to Checkout
               <span className="material-symbols-outlined">arrow_forward</span>
             </button>

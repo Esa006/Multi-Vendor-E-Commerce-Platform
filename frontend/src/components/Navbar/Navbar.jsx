@@ -94,6 +94,7 @@ export default function Navbar({
   deliveryCity = 'Chennai',
   deliveryPin  = '600001',
   onSearch,
+  onLogout,
 }) {
   const [searchValue,   setSearchValue]   = useState('');
   const [category,      setCategory]      = useState('All Categories');
@@ -278,7 +279,7 @@ export default function Navbar({
                         <span className="material-symbols-outlined">account_balance_wallet</span> Wallet
                       </Link>
                       <div className="sv-user__divider" aria-hidden="true" />
-                      <button className="sv-user__item sv-user__item--danger" role="menuitem" onClick={() => setUserMenuOpen(false)}>
+                      <button className="sv-user__item sv-user__item--danger" role="menuitem" onClick={() => { setUserMenuOpen(false); if (onLogout) onLogout(); }}>
                         <span className="material-symbols-outlined">logout</span> Sign Out
                       </button>
                     </>

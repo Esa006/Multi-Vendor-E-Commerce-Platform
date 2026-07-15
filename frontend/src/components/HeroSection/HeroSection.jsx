@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
 import './HeroSection.css';
-
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 /* ══════════════════════════════════════════════════════
    DATA
 ══════════════════════════════════════════════════════ */
 const SIDEBAR_CATEGORIES = [
-  { icon: 'devices',        label: 'Electronics' },
-  { icon: 'checkroom',      label: 'Fashion' },
-  { icon: 'kitchen',        label: 'Home & Kitchen' },
+  { icon: 'devices', label: 'Electronics' },
+  { icon: 'checkroom', label: 'Fashion' },
+  { icon: 'kitchen', label: 'Home & Kitchen' },
   { icon: 'face_retouching_natural', label: 'Beauty & Personal Care' },
   { icon: 'sports_basketball', label: 'Sports & Outdoors' },
-  { icon: 'menu_book',      label: 'Books & Stationery' },
-  { icon: 'toys',           label: 'Toys & Games' },
+  { icon: 'menu_book', label: 'Books & Stationery' },
+  { icon: 'toys', label: 'Toys & Games' },
   { icon: 'directions_car', label: 'Automotive' },
 ];
 
@@ -49,30 +51,30 @@ const HERO_SLIDES = [
 ];
 
 const HERO_STATS = [
-  { icon: 'group',    value: '100+',    label: 'Top Vendors' },
+  { icon: 'group', value: '100+', label: 'Top Vendors' },
   { icon: 'inventory_2', value: '10,000+', label: 'Products' },
   { icon: 'verified_user', value: 'Trusted', label: 'Secure Shopping' },
 ];
 
 const CATEGORY_ICONS = [
   { icon: 'headphones', label: 'Electronics', href: '/shop?cat=electronics', color: '#EFF6FF' },
-  { icon: 'checkroom',  label: 'Fashion',     href: '/shop?cat=fashion',     color: '#FDF2F8' },
-  { icon: 'kitchen',    label: 'Home & Kitchen', href: '/shop?cat=home',     color: '#FFF7ED' },
+  { icon: 'checkroom', label: 'Fashion', href: '/shop?cat=fashion', color: '#FDF2F8' },
+  { icon: 'kitchen', label: 'Home & Kitchen', href: '/shop?cat=home', color: '#FFF7ED' },
   { icon: 'face_retouching_natural', label: 'Beauty', href: '/shop?cat=beauty', color: '#FDF4FF' },
-  { icon: 'sports_basketball', label: 'Sports',  href: '/shop?cat=sports',   color: '#F0FDF4' },
-  { icon: 'menu_book',  label: 'Books',       href: '/shop?cat=books',       color: '#FFFBEB' },
-  { icon: 'toys',       label: 'Toys',        href: '/shop?cat=toys',        color: '#FFF1F2' },
-  { icon: 'directions_car', label: 'Automotive', href: '/shop?cat=auto',     color: '#F8FAFC' },
-  { icon: 'diamond',    label: 'Jewelry',     href: '/shop?cat=jewelry',     color: '#FDF4FF' },
-  { icon: 'grid_view',  label: 'View All',    href: '/shop',                 color: '#EFF6FF' },
+  { icon: 'sports_basketball', label: 'Sports', href: '/shop?cat=sports', color: '#F0FDF4' },
+  { icon: 'menu_book', label: 'Books', href: '/shop?cat=books', color: '#FFFBEB' },
+  { icon: 'toys', label: 'Toys', href: '/shop?cat=toys', color: '#FFF1F2' },
+  { icon: 'directions_car', label: 'Automotive', href: '/shop?cat=auto', color: '#F8FAFC' },
+  { icon: 'diamond', label: 'Jewelry', href: '/shop?cat=jewelry', color: '#FDF4FF' },
+  { icon: 'grid_view', label: 'View All', href: '/shop', color: '#EFF6FF' },
 ];
 
 const TRUST_BADGES = [
-  { icon: 'local_shipping',        title: 'Free Shipping',     sub: 'On orders above ₹499' },
-  { icon: 'lock',                  title: 'Secure Payment',    sub: '100% secure payments' },
-  { icon: 'replay',                title: 'Easy Returns',      sub: '30-day return policy' },
-  { icon: 'support_agent',         title: '24/7 Support',      sub: 'Dedicated support' },
-  { icon: 'storefront',            title: 'Vendor Protection', sub: 'Safe & trusted platform' },
+  { icon: 'local_shipping', title: 'Free Shipping', sub: 'On orders above ₹499' },
+  { icon: 'lock', title: 'Secure Payment', sub: '100% secure payments' },
+  { icon: 'replay', title: 'Easy Returns', sub: '30-day return policy' },
+  { icon: 'support_agent', title: '24/7 Support', sub: 'Dedicated support' },
+  { icon: 'storefront', title: 'Vendor Protection', sub: 'Safe & trusted platform' },
 ];
 
 const DEAL_PRODUCTS = [
@@ -104,12 +106,12 @@ const DEAL_PRODUCTS = [
 ];
 
 const TOP_CATEGORIES = [
-  { label: 'Electronics',   img: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=300&q=80', count: '2,450+ products' },
-  { label: 'Fashion',       img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80', count: '5,120+ products' },
-  { label: 'Home & Kitchen',img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=300&q=80', count: '3,890+ products' },
-  { label: 'Beauty',        img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=300&q=80', count: '1,760+ products' },
-  { label: 'Sports',        img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=300&q=80', count: '2,200+ products' },
-  { label: 'Books',         img: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=300&q=80', count: '8,500+ products' },
+  { label: 'Electronics', img: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=300&q=80', count: '2,450+ products' },
+  { label: 'Fashion', img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80', count: '5,120+ products' },
+  { label: 'Home & Kitchen', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=300&q=80', count: '3,890+ products' },
+  { label: 'Beauty', img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=300&q=80', count: '1,760+ products' },
+  { label: 'Sports', img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=300&q=80', count: '2,200+ products' },
+  { label: 'Books', img: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=300&q=80', count: '8,500+ products' },
 ];
 
 const FEATURED_PRODUCTS = [
@@ -236,6 +238,9 @@ function Stars({ rating }) {
 /* Generic Product Card */
 function ProductCard({ product }) {
   const [wished, setWished] = useState(false);
+  const navigator = useNavigate();
+  const { addToCart } = useCart();
+
   return (
     <div className="sv-deal-card" role="article" aria-label={product.name}>
       {product.discount && <span className="sv-deal-badge">-{product.discount}%</span>}
@@ -261,7 +266,17 @@ function ProductCard({ product }) {
           <span className="sv-deal-vendor">{product.vendor}</span>
           <Stars rating={product.rating} />
         </div>
-        <button className="sv-deal-add-btn" type="button" aria-label={`Add ${product.name} to cart`}>
+        <button
+          className="sv-deal-add-btn"
+          type="button"
+          aria-label={`Add ${product.name} to cart`}
+          onClick={async () => {
+            const res = await addToCart(product.id, null, 1);
+            if (res.success) {
+              navigator('/cart');
+            }
+          }}
+        >
           <span className="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
           Add to Cart
         </button>
@@ -321,7 +336,7 @@ export default function HeroSection() {
               {SIDEBAR_CATEGORIES.map(({ icon, label }) => (
                 <li key={label}>
                   <a href={`/shop?cat=${label.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                     className="sv-sidebar__item">
+                    className="sv-sidebar__item">
                     <span className="material-symbols-outlined sv-sidebar__icon" aria-hidden="true">{icon}</span>
                     <span className="sv-sidebar__label">{label}</span>
                     <span className="material-symbols-outlined sv-sidebar__arrow" aria-hidden="true">chevron_right</span>
