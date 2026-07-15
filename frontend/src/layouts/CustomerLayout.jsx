@@ -1,6 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import './CustomerLayout.css';
 
 /**
@@ -9,16 +11,17 @@ import './CustomerLayout.css';
  *   Navbar (sticky top) → <main> → Footer
  */
 export default function CustomerLayout({
-  cartCount    = 0,
-  wishlistCount= 0,
   userName     = 'Guest',
   isLoggedIn   = false,
 }) {
+  const { cartCount } = useCart();
+  const { wishlistItems } = useWishlist();
+
   return (
     <div className="sv-customer-layout">
       <Navbar
         cartCount={cartCount}
-        wishlistCount={wishlistCount}
+        wishlistCount={wishlistItems.length}
         userName={userName}
         isLoggedIn={isLoggedIn}
       />

@@ -219,6 +219,22 @@ class DatabaseSeeder extends Seeder
             ]
         ];
 
+        // Create some generic users for reviews
+        $reviewers = [
+            User::first(),
+            User::factory()->create(['name' => 'Aarav Mehta', 'email' => 'aarav@gmail.com']),
+            User::factory()->create(['name' => 'Ananya Sharma', 'email' => 'ananya@gmail.com']),
+            User::factory()->create(['name' => 'Rohan Das', 'email' => 'rohan@gmail.com']),
+        ];
+
+        $reviewTemplates = [
+            ['rating' => 5, 'comment' => 'Absolutely love this! The quality is top-notch and exactly as described.'],
+            ['rating' => 5, 'comment' => 'Super fast delivery and great packaging. Highly recommended store!'],
+            ['rating' => 4, 'comment' => 'Good product. Decent quality for the price. Would buy again.'],
+            ['rating' => 5, 'comment' => 'Excellent value for money. Very satisfied with the purchase.'],
+            ['rating' => 4, 'comment' => 'Very solid construction and beautiful finish. Performs perfectly.'],
+        ];
+
         foreach ($productsData as $prod) {
             $catSlug = $prod['category'];
             $brandName = $prod['brand'];
@@ -233,14 +249,58 @@ class DatabaseSeeder extends Seeder
 
             $product = Product::create($prod);
 
-            // Add standard images and variants for simulation
+            // Add images: thumbnail plus 2 other generic unsplash images for gallery
             $product->images()->create([
                 'image_url' => $product->thumbnail
             ]);
-
-            $product->variants()->createMany([
-                ['name' => 'Standard', 'value' => 'Default', 'price_override' => null]
+            $product->images()->create([
+                'image_url' => 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=600&q=80'
             ]);
+            $product->images()->create([
+                'image_url' => 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80'
+            ]);
+
+            // Add specific variants
+            if ($catSlug === 'electronics') {
+                // Storage variants
+                $product->variants()->createMany([
+                    ['name' => 'Storage', 'value' => '128GB', 'price_override' => null],
+                    ['name' => 'Storage', 'value' => '256GB', 'price_override' => 10000.00],
+                    ['name' => 'Storage', 'value' => '512GB', 'price_override' => 25000.00]
+                ]);
+                // Color variants
+                $product->variants()->createMany([
+                    ['name' => 'Color', 'value' => 'Natural Titanium', 'price_override' => null],
+                    ['name' => 'Color', 'value' => 'Blue Titanium', 'price_override' => null]
+                ]);
+            } elseif ($catSlug === 'fashion') {
+                // Size variants
+                $product->variants()->createMany([
+                    ['name' => 'Size', 'value' => 'UK 7', 'price_override' => null],
+                    ['name' => 'Size', 'value' => 'UK 8', 'price_override' => null],
+                    ['name' => 'Size', 'value' => 'UK 9', 'price_override' => 500.00],
+                    ['name' => 'Size', 'value' => 'UK 10', 'price_override' => 500.00]
+                ]);
+                // Color variants
+                $product->variants()->createMany([
+                    ['name' => 'Color', 'value' => 'Black', 'price_override' => null],
+                    ['name' => 'Color', 'value' => 'Crimson Red', 'price_override' => null]
+                ]);
+            } else {
+                $product->variants()->createMany([
+                    ['name' => 'Standard', 'value' => 'Default', 'price_override' => null]
+                ]);
+            }
+
+            // Seed reviews
+            foreach ($reviewers as $idx => $user) {
+                $template = $reviewTemplates[($idx + $product->id) % count($reviewTemplates)];
+                $product->reviews()->create([
+                    'user_id' => $user->id,
+                    'rating' => $template['rating'],
+                    'comment' => $template['comment']
+                ]);
+            }
         }
     }
 }

@@ -153,12 +153,18 @@ class ProductController extends Controller
     }
 
     /**
-     * GET /api/products/{id}
-     * Fetch single product details
+     * GET /api/products/{slugOrId}
+     * Fetch single product details by slug or ID
      */
-    public function show(string $id): JsonResponse
+    public function show(string $slugOrId): JsonResponse
     {
-        $product = Product::with(['vendor', 'brand', 'category', 'images', 'variants'])->find($id);
+        $query = Product::with(['vendor', 'brand', 'category', 'images', 'variants']);
+
+        if (is_numeric($slugOrId)) {
+            $product = $query->find($slugOrId);
+        } else {
+            $product = $query->where('slug', $slugOrId)->first();
+        }
 
         if (!$product) {
             return response()->json([
@@ -170,6 +176,60 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'data' => new ProductResource($product)
+        ]);
+    }
+
+    /**
+     * GET /api/products/{slug}/related
+     */
+    public function related(string $slug): JsonResponse
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product not found.'
+            ], 404);
+        }
+
+        $related = Product::with(['vendor', 'brand', 'category', 'images', 'variants'])
+            ->where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->limit(4)
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => ProductResource::collection($related)
+        ]);
+    }
+
+    /**
+     * GET /api/products/{slug}/reviews
+     */
+    public function reviews(string $slug): JsonResponse
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product not found.'
+            ], 404);
+        }
+
+        $reviews = $product->reviews()->with('user')->orderBy('id', 'desc')->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data' => $reviews->items(),
+            'meta' => [
+                'total' => $reviews->total(),
+                'current_page' => $reviews->currentPage(),
+                'last_page' => $reviews->lastPage(),
+                'per_page' => $reviews->perPage()
+            ]
         ]);
     }
 

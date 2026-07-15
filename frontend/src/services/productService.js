@@ -35,6 +35,16 @@ export const getProduct = async (id) => {
   return response.data;
 };
 
+export const getRelatedProducts = async (slug) => {
+  const response = await axios.get(`${API_BASE_URL}/products/${slug}/related`);
+  return response.data;
+};
+
+export const getProductReviews = async (slug) => {
+  const response = await axios.get(`${API_BASE_URL}/products/${slug}/reviews`);
+  return response.data;
+};
+
 export const searchProducts = async (query) => {
   return getProducts({ search: query });
 };
@@ -45,6 +55,8 @@ export const filterProducts = async (filters) => {
 export default {
   getProducts,
   getProduct,
+  getRelatedProducts,
+  getProductReviews,
   searchProducts,
   filterProducts,
 };

@@ -1,0 +1,61 @@
+/* =============================================================================
+   WishlistPage.css — ShopVerse Customer Wishlist Page
+   ============================================================================= */
+
+.sv-wishlist {
+  background: var(--color-bg-body, #F8FAFC);
+  padding-bottom: var(--space-16);
+  min-height: 80vh;
+}
+
+.sv-wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 1200px) {
+  .sv-wishlist-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .sv-wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .sv-wishlist-grid { grid-template-columns: 1fr; }
+}
+
+.sv-wishlist-item-card {
+  position: relative;
+}
+
+/* Close/Remove overlay */
+.sv-wishlist-remove-overlay {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 10;
+}
+
+.sv-wishlist-remove-btn {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.sv-wishlist-remove-btn:hover {
+  background: var(--color-red-50);
+  color: var(--color-red-600);
+  border-color: var(--color-red-200);
+  transform: scale(1.06);
+}
