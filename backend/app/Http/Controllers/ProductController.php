@@ -30,7 +30,9 @@ class ProductController extends Controller
             'featured' => 'nullable|string|in:0,1,true,false',
             'min_price' => 'nullable|numeric|min:0',
             'max_price' => 'nullable|numeric|min:0',
-            'sort' => 'nullable|string|in:price-asc,price-desc,rating-desc,discount-desc,a-z,newest,price_asc,price_desc',
+            'discount' => 'nullable|integer|min:0|max:100',
+            'avail' => 'nullable|string|in:all,instock,outofstock',
+            'sort' => 'nullable|string|in:price-asc,price-desc,rating-desc,best-selling,best_selling,discount-desc,a-z,newest,price_asc,price_desc',
             'page' => 'nullable|integer|min:1',
             'per_page' => 'nullable|integer|min:1|max:100',
         ]);
@@ -39,13 +41,16 @@ class ProductController extends Controller
         $query = Product::with(['vendor', 'brand', 'category', 'images', 'variants']);
 
         // 3. Apply Filters
-        // Search (by product name, sku, or description)
+        // Search (by product name, sku, description, or brand)
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('sku', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhereHas('brand', function ($bq) use ($search) {
+                      $bq->where('name', 'like', "%{$search}%");
+                  });
             });
         }
 
@@ -95,6 +100,21 @@ class ProductController extends Controller
             $query->where('price', '<=', $request->input('max_price'));
         }
 
+        // Availability Filter
+        if ($request->filled('avail')) {
+            $avail = $request->input('avail');
+            if ($avail === 'instock') {
+                $query->where('stock', '>', 0);
+            } elseif ($avail === 'outofstock') {
+                $query->where('stock', '<=', 0);
+            }
+        }
+
+        // Discount Filter
+        if ($request->filled('discount')) {
+            $query->where('discount', '>=', $request->input('discount'));
+        }
+
         // 4. Sorting
         $sort = $request->input('sort', 'newest');
         switch ($sort) {
@@ -108,6 +128,10 @@ class ProductController extends Controller
                 break;
             case 'rating-desc':
                 $query->orderBy('rating', 'desc');
+                break;
+            case 'best-selling':
+            case 'best_selling':
+                $query->orderBy('reviews', 'desc');
                 break;
             case 'discount-desc':
                 $query->orderBy('discount', 'desc');

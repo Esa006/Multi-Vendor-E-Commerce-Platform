@@ -295,6 +295,7 @@ export default function ShopPage() {
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="rating-desc">Highest Rated</option>
+                  <option value="best-selling">Best Selling</option>
                   <option value="discount-desc">Max Discount</option>
                   <option value="a-z">Name: A-Z</option>
                 </select>
